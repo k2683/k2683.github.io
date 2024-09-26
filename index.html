@@ -18,10 +18,28 @@
             color: white;
             text-align: center;
             padding: 20px 0;
+            position: relative;
         }
         header h1 {
             margin: 0;
             font-size: 2.5em;
+        }
+        .language-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .language-switcher button {
+            background-color: white;
+            color: #3498db;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .language-switcher button:hover {
+            background-color: #2980b9;
+            color: white;
         }
         .content {
             max-width: 1200px;
@@ -67,60 +85,164 @@
             background-color: #3498db;
             color: white;
         }
+        .zh {
+            display: none;
+        }
     </style>
+    <script>
+        function switchLanguage(lang) {
+            if (lang === 'en') {
+                var enElements = document.getElementsByClassName('en');
+                var zhElements = document.getElementsByClassName('zh');
+                for (var i = 0; i < enElements.length; i++) {
+                    enElements[i].style.display = 'block';
+                }
+                for (var i = 0; i < zhElements.length; i++) {
+                    zhElements[i].style.display = 'none';
+                }
+            } else if (lang === 'zh') {
+                var enElements = document.getElementsByClassName('en');
+                var zhElements = document.getElementsByClassName('zh');
+                for (var i = 0; i < enElements.length; i++) {
+                    enElements[i].style.display = 'none';
+                }
+                for (var i = 0; i < zhElements.length; i++) {
+                    zhElements[i].style.display = 'block';
+                }
+            }
+        }
+    </script>
 </head>
-<body>
+<body onload="switchLanguage('en')">
 
     <header>
-        <h1>Ben's Game Demos and Utilities</h1>
-        <p>Welcome to Ben's collection of game demos and development utilities.</p>
+        <h1>
+            <span class="en">Ben's Game Demos and Utilities</span>
+            <span class="zh">Ben的游戏演示和工具</span>
+        </h1>
+        <p>
+            <span class="en">Welcome to Ben's collection of game demos and development utilities.</span>
+            <span class="zh">欢迎来到Ben的游戏演示和开发工具集合。</span>
+        </p>
+        <div class="language-switcher">
+            <button onclick="switchLanguage('en')">English</button>
+            <button onclick="switchLanguage('zh')">中文</button>
+        </div>
     </header>
 
     <div class="content">
         <!-- 模块一：QuadTree Detection Demo -->
         <div class="module">
-            <h2>QuadTree Detection Demo</h2>
-            <p>This demo showcases the implementation of a quadtree for collision detection. </p>
+            <h2>
+                <span class="en">QuadTree Detection Demo</span>
+                <span class="zh">四叉树检测演示</span>
+            </h2>
+            <p>
+                <span class="en">This demo showcases the implementation of a quadtree for collision detection.</span>
+                <span class="zh">此演示展示了使用四叉树进行碰撞检测的实现。</span>
+            </p>
             <video controls>
                 <source src="https://raw.githubusercontent.com/k2683/k2683.github.io/main/Quad%20Tree%20Detection%20Video.mp4" type="video/mp4">
-                Your browser does not support the video tag.
+                <span class="en">Your browser does not support the video tag.</span>
+                <span class="zh">您的浏览器不支持视频标签。</span>
             </video>
-            <p><a href="https://github.com/k2683/Quad-Tree-Collision-Detection" target="_blank">View on GitHub</a></p>
+            <p>
+                <a href="https://github.com/k2683/Quad-Tree-Collision-Detection" target="_blank">
+                    <span class="en">View on GitHub</span>
+                    <span class="zh">在GitHub上查看</span>
+                </a>
+            </p>
+            <!-- PDFs -->
+            <p>
+                <a href="QuadTree_Technical_Summary.pdf" class="en">View QuadTree Technical Summary (PDF)</a>
+                <a href="四叉树技术总结.pdf" class="zh">查看四叉树技术总结（PDF）</a>
+            </p>
         </div>
 
         <!-- 模块二：沙漠交互的特效场景 -->
         <div class="module">
-            <h2>Desert Interaction Effects Scene</h2>
-            <p>I tried to create a realistic, interactive desert scene by implementing several key effects. These include reflective sand that reacts dynamically when facing the camera, ray marching achieved by modifying the Unity URP pipeline, and footprint effects rendered using customized PBR shaders. You can explore the source code on GitHub.</p>
+            <h2>
+                <span class="en">Desert Interaction Effects Scene</span>
+                <span class="zh">沙漠交互特效场景</span>
+            </h2>
+            <p>
+                <span class="en">I tried to create a realistic, interactive desert scene by implementing several key effects. These include reflective sand that reacts dynamically when facing the camera, ray marching achieved by modifying the Unity URP pipeline, and footprint effects rendered using customized PBR shaders. You can explore the source code on GitHub.</span>
+                <span class="zh">我尝试通过实现几个关键效果来创建一个逼真、可交互的沙漠场景。这些效果包括动态反应的反射沙子，通过修改Unity URP管线实现的光线行进，以及使用自定义PBR着色器渲染的脚印效果。您可以在GitHub上查看源代码。</span>
+            </p>
 
             <!-- 第一个视频 -->
             <video controls>
                 <source src="https://raw.githubusercontent.com/k2683/k2683.github.io/main/DessrtEffect_Raymarching.mp4" type="video/mp4">
-                Your browser does not support the video tag.
+                <span class="en">Your browser does not support the video tag.</span>
+                <span class="zh">您的浏览器不支持视频标签。</span>
             </video>
 
             <!-- 第二个视频 -->
             <video controls>
                 <source src="https://raw.githubusercontent.com/k2683/k2683.github.io/main/DessertEffect_Footprint.mp4" type="video/mp4">
-                Your browser does not support the video tag.
+                <span class="en">Your browser does not support the video tag.</span>
+                <span class="zh">您的浏览器不支持视频标签。</span>
             </video>
 
-            <p><a href="https://github.com/k2683/Desert-scene-special-effects-in-Unity" target="_blank">View on GitHub</a></p>
+            <p>
+                <a href="https://github.com/k2683/Desert-scene-special-effects-in-Unity" target="_blank">
+                    <span class="en">View on GitHub</span>
+                    <span class="zh">在GitHub上查看</span>
+                </a>
+            </p>
+            <!-- PDFs -->
+            <p>
+                <a href="Simulation of Desert Scenes Based on the URP Pipeline.pdf">
+                    <span class="en">View Simulation of Desert Scenes Based on the URP Pipeline (PDF)</span>
+                    <span class="zh">查看基于URP管线的沙漠场景模拟（PDF）</span>
+                </a>
+            </p>
         </div>
-
 
         <!-- 模块三：Dark Allies 游戏Demo -->
         <div class="module">
-            <h2>Dark Allies Game Demo</h2>
-            <p>Dark Allies is a multiplayer game demo I developed that supports saving and loading locally, weapon switching, a character attack and damage framework, and simple AI for monsters. Below are two example images from the game, and you can find the source code on GitHub. I will keep improving and expanding the game over time.</p>
-            <img src="https://raw.githubusercontent.com/k2683/k2683.github.io/main/Dark%20Allies%20Temp1.png" alt="Dark Allies Screenshot 1">
-            <img src="https://raw.githubusercontent.com/k2683/k2683.github.io/main/Dark%20Allies%20Temp2.png" alt="Dark Allies Screenshot 2">
-            <p><a href="https://github.com/k2683/Dark-Allies" target="_blank">View on GitHub</a></p>
+            <h2>
+                <span class="en">Dark Allies Game Demo</span>
+                <span class="zh">Dark Allies 游戏演示</span>
+            </h2>
+            <p>
+                <span class="en">Dark Allies is a multiplayer game demo I developed that supports saving and loading locally, weapon switching, a character attack and damage framework, and simple AI for monsters. Below are some example videos from the game, and you can find the source code on GitHub. I will keep improving and expanding the game over time.</span>
+                <span class="zh">Dark Allies是我开发的一个多人游戏演示，支持本地保存和加载、武器切换、角色攻击和伤害框架，以及简单的怪物AI。以下是游戏的一些示例视频，您可以在GitHub上找到源代码。我将不断改进和扩展游戏。</span>
+            </p>
+
+            <!-- 添加的视频 -->
+            <video controls>
+                <source src="https://raw.githubusercontent.com/k2683/k2683.github.io/main/DarkAllies_FightEnemy.mp4" type="video/mp4">
+                <span class="en">Your browser does not support the video tag.</span>
+                <span class="zh">您的浏览器不支持视频标签。</span>
+            </video>
+            <video controls>
+                <source src="https://raw.githubusercontent.com/k2683/k2683.github.io/main/DarkAllies_FightEachOther.mp4" type="video/mp4">
+                <span class="en">Your browser does not support the video tag.</span>
+                <span class="zh">您的浏览器不支持视频标签。</span>
+            </video>
+            <video controls>
+                <source src="https://raw.githubusercontent.com/k2683/k2683.github.io/main/DarkAllies_Save&Load.mp4" type="video/mp4">
+                <span class="en">Your browser does not support the video tag.</span>
+                <span class="zh">您的浏览器不支持视频标签。</span>
+            </video>
+
+            <p>
+                <a href="https://github.com/k2683/Dark-Allies" target="_blank">
+                    <span class="en">View on GitHub</span>
+                    <span class="zh">在GitHub上查看</span>
+                </a>
+            </p>
+            <!-- PDFs -->
+            <p>
+                <a href="Dark_Allies_Technical_Summary.pdf" class="en">View Dark Allies Technical Summary (PDF)</a>
+                <a href="Dark Allies 技术总结.pdf" class="zh">查看Dark Allies 技术总结（PDF）</a>
+            </p>
         </div>
     </div>
 
     <footer>
-        <p>© 2024 Ben. All rights reserved. | <a href="mailto:lihoude1@gmail.com">Contact Me</a></p>
+        <p>© 2024 Ben. All rights reserved. | <a href="mailto:lihoude1@gmail.com"><span class="en">Contact Me</span><span class="zh">联系我们</span></a></p>
     </footer>
 
 </body>
